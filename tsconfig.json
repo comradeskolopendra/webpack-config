@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+    // Если какая-то библиотека не имеет default export,
+    // Лоадеры ts-loader или babel-loader автоматически создают их,
+    // и позволяют вместо:
+    // import * as React from "react";
+    // писать это:
+    // import React from "react";
+    "allowSyntheticDefaultImports": true,
+    // позволяет работать с пакетами, которые используют commonJS, как с обычными пакетами - то есть, импортирвоать с помощью import.
+    "esModuleInterop": true,
+    // Для настройки алиасов нужно указать так же и алиасы в tsconfige, чтобы ts понимал обращения.
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    // Для настройки алиасов
+    "baseUrl": "."
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
