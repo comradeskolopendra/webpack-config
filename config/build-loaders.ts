@@ -36,7 +36,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     };
 
     const tsLoader = {
-        test: /\.tsx$/i,
+        test: /\.tsx?$/i,
         use: ["ts-loader"],
         exclude: /node_modules/
     };
