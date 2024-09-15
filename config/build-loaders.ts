@@ -27,13 +27,24 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     }
 
     const scssLoader = {
-        test: /\.s[ac]ss$/i,
+        test: /\.(scss|css|sass)$/i,
         use: [
             isDev ? "style-loader" : MiniCssExtractPlugin.loader,
             cssLoaderWithModules,
             "sass-loader"
-        ]
+        ],
+        include: /\.module\.(scss|css|sass)$/
     };
+
+    const globalCssLoader = {
+        test: /\.(scss|css|sass)$/i,
+        use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
+            "sass-loader"
+        ],
+        exclude: /\.module\.(scss|css|sass)$/
+    }
 
     const tsLoader = {
         test: /\.tsx?$/i,
